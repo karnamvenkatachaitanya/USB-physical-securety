@@ -1,0 +1,78 @@
+2025-09-01 21:01:42 - INFO - admin - Status check performed. Result: Enabled
+2025-09-01 21:01:48 - INFO - SYSTEM - Application closed.
+2025-09-01 21:25:06 - INFO - SYSTEM - Application started.
+2025-09-01 21:26:28 - INFO - admin - Login successful.
+2025-09-01 21:26:28 - INFO - admin - Status check performed. Result: Enabled
+2025-09-01 21:40:07 - INFO - SYSTEM - Application closed.
+2025-09-01 21:40:18 - INFO - SYSTEM - Application started.
+2025-09-01 21:40:23 - WARNING - GUEST - Failed login attempt.
+2025-09-01 21:40:42 - WARNING - GUEST - Failed login attempt.
+2025-09-01 21:41:00 - WARNING - user - Failed login attempt.
+2025-09-01 21:41:00 - CRITICAL - user - INTRUDER ALERT: Maximum login attempts exceeded. Capturing image.
+2025-09-01 21:41:06 - INFO - SYSTEM - Application closed.
+2025-09-01 21:43:36 - INFO - SYSTEM - Application started with admin rights.
+2025-09-01 21:43:48 - INFO - admin - Login successful.
+2025-09-01 21:43:48 - INFO - admin - Status check performed. Result: Enabled
+2025-09-01 21:43:50 - INFO - admin - USB Ports Disabled Successfully
+2025-09-01 21:44:02 - INFO - admin - Status check performed. Result: Disabled
+2025-09-01 21:47:29 - INFO - admin - USB Ports Enabled Successfully
+2025-09-01 21:47:31 - INFO - admin - Status check performed. Result: Enabled
+2025-09-01 21:47:44 - INFO - admin - Status check performed. Result: Enabled
+2025-09-01 21:47:45 - INFO - admin - Status check performed. Result: Enabled
+2025-09-01 21:48:00 - INFO - admin - Successfully updated password for user 'admin'.
+2025-09-01 21:48:00 - INFO - admin - Generated new password for admin. Attempting to email.
+2025-09-01 21:48:00 - INFO - admin - Attempting to send email to admin@example.com.
+2025-09-01 21:48:10 - WARNING - admin - Email sending skipped: email not configured in config.ini.
+2025-09-01 21:48:12 - INFO - admin - Project Info viewed.
+2025-09-01 21:48:15 - INFO - admin - User logged out.
+2025-09-01 21:48:18 - INFO - SYSTEM - Application closed.
+2025-09-01 21:51:37 - INFO - SYSTEM - Application started with admin rights.
+2025-09-01 21:51:47 - WARNING - admin - Failed login attempt for user 'admin'.
+2025-09-01 21:51:54 - INFO - SYSTEM - Application closed.
+2025-09-01 22:16:29 - INFO - SYSTEM - Application started with admin rights.
+2025-09-01 22:16:37 - WARNING - admin - Failed login attempt for user 'admin'.
+2025-09-01 22:16:47 - INFO - SYSTEM - Application closed.
+2025-09-01 22:19:33 - INFO - SYSTEM - Application started with admin rights.
+2025-09-01 22:19:42 - WARNING - admin - Failed login attempt for user 'admin'.
+2025-09-01 22:19:51 - WARNING - admin - Failed login attempt for user 'admin'.
+2025-09-01 22:19:57 - WARNING - admin - Failed login attempt for user 'admin'.
+2025-09-01 22:19:57 - CRITICAL - admin - INTRUDER ALERT: Maximum login attempts exceeded. Starting video capture.
+2025-09-01 22:20:00 - INFO - admin - Created 'intruder_videos' directory.
+2025-09-01 22:20:00 - INFO - admin - Recording 5-second video to intruder_videos/intruder_20250901_222000.avi
+2025-09-01 22:20:05 - INFO - admin - Successfully wrote 143 frames to video.
+2025-09-01 22:20:13 - INFO - SYSTEM - Application closed.
+2025-09-01 22:28:39 - INFO - SYSTEM - Application started with admin rights.
+2025-09-01 22:28:48 - WARNING - admin - Failed login attempt for user 'admin'.
+2025-09-01 22:29:08 - WARNING - admin - Failed login attempt for user 'admin'.
+2025-09-01 22:29:13 - WARNING - admin - Failed login attempt for user 'admin'.
+2025-09-01 22:29:13 - CRITICAL - admin - INTRUDER ALERT: Maximum login attempts exceeded. Starting video capture.
+2025-09-01 22:29:16 - INFO - admin - Recording 5-second video to intruder_videos/intruder_20250901_222916.avi
+2025-09-01 22:29:21 - INFO - admin - Successfully wrote 144 frames to video.
+2025-09-01 22:29:24 - INFO - SYSTEM - Application closed.
+2025-09-01 22:32:11 - INFO - SYSTEM - Application started with admin rights.
+2025-09-01 22:32:21 - WARNING - admin - Failed login attempt for user 'admin'.
+2025-09-01 22:33:50 - INFO - SYSTEM - Application started with admin rights.
+2025-09-01 22:34:04 - WARNING - admin - Failed login attempt for user 'admin'.
+2025-09-01 22:41:40 - INFO - SYSTEM - Application started with admin rights.
+2025-09-01 22:41:49 - WARNING - admin - Failed login attempt for user 'admin'.
+2025-09-01 22:41:56 - INFO - SYSTEM - Application closed.
+2025-09-01 22:42:20 - INFO - SYSTEM - Application started with admin rights.
+2025-09-01 22:42:27 - WARNING - admin - Failed login attempt for user 'admin'.
+2025-09-01 22:42:31 - INFO - SYSTEM - Application closed.
+2025-09-01 22:45:47 - INFO - SYSTEM - Application started with admin rights.
+2025-09-01 22:45:55 - WARNING - admin - Failed login attempt for user 'admin'.
+2025-09-01 22:46:00 - INFO - SYSTEM - Application closed.
+2025-09-01 22:58:14 - INFO - SYSTEM - Database created. Default user 'admin' with password 'admin' was created.
+2025-09-01 22:58:14 - INFO - SYSTEM - Application started with admin rights.
+2025-09-01 22:58:23 - INFO - admin - Login successful.
+2025-09-01 22:58:23 - INFO - admin - Status check performed. Result: Enabled
+2025-09-01 23:03:42 - INFO - SYSTEM - Application closed.
+2025-09-01 23:04:04 - INFO - SYSTEM - Application started with admin rights.
+2025-09-01 23:04:12 - INFO - admin - Login successful.
+2025-09-01 23:04:15 - INFO - admin - Status check performed. Result: Enabled
+2025-09-01 23:05:47 - INFO - admin - Status check performed. Result: Enabled
+2025-09-01 23:05:50 - INFO - admin - USB Ports Enabled Successfully
+2025-09-01 23:05:53 - INFO - admin - Status check performed. Result: Enabled
+2025-09-01 23:05:55 - INFO - admin - Project Info viewed.
+2025-09-01 23:06:10 - INFO - admin - User logged out.
+2025-09-01 23:06:12 - INFO - SYSTEM - Application closed.
