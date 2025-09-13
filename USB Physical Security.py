@@ -347,23 +347,19 @@ def show_project_info():
             <tr>
                 <td>Tejaswi</td>
                 <td>ST#IS#8056</td>
-                <td>Anonymous@gmail.com</td>
+                <td>tejaswi@gmail.com</td>
             </tr>
             <tr>
                 <td>Princy</td>
                 <td>ST#IS#8051</td>
-                <td>Anonymous@gmail.com</td>
+                <td>23kb1a3014@nbkrist.org</td>
             </tr>
             <tr>
                 <td>Rajeswari</td>
                 <td>ST#IS#8079</td>
-                <td>Anonymous@gmail.com</td>
+                <td>rajeswari@gmail.com</td>
             </tr>
-            <tr>
-                <td>Anonymous</td>
-                <td>ST#IS#0001</td>
-                <td>Anonymous@gmail.com</td>
-            </tr>
+        
         </table>
         
         <h2>Company Details</h2>
