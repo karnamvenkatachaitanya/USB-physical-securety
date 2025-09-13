@@ -1,5 +1,5 @@
 import tkinter as tk
-from tkinter import messagebox, simpledialog, Frame, Label, Entry, Button
+from tkinter import messagebox, simpledialog, Frame, Label, Entry, Button, Toplevel
 import subprocess
 import os
 import logging
@@ -13,6 +13,8 @@ from email.message import EmailMessage
 import ctypes
 import sys
 import time
+import tempfile
+import webbrowser
 
 # Attempt to import OpenCV, but allow the app to run without it.
 # To install: pip install opencv-python pandas
@@ -42,8 +44,8 @@ def create_default_config():
         config['EMAIL'] = {
             'SMTPServer': 'smtp.gmail.com',
             'Port': '587',
-            'YourEmail': 'your_email@gmail.com',
-            'YourPassword': 'your_app_password' # IMPORTANT: Use a Gmail App Password
+            'YourEmail': 'k.v.c23kb1a3037@gmail.com',
+            'YourPassword': 'tyim nwey xgml vtae' # IMPORTANT: Use a Gmail App Password
         }
         with open('config.ini', 'w') as configfile:
             config.write(configfile)
@@ -236,6 +238,164 @@ def capture_intruder_video():
         cv2.destroyAllWindows()
 
 
+# --- PROJECT INFO FUNCTIONALITY ---
+def show_project_info():
+    """Displays project information in a web browser."""
+    html_code = """
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Project Information</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f2f2f2;
+    }
+
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 50px 20px;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        border-radius: 8px;
+    }
+
+    h1 {
+        color: #2c3e50;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    h2 {
+        color: #3498db;
+        border-bottom: 2px solid #3498db;
+        padding-bottom: 10px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+    }
+
+    th, td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Project Information</h1>
+        
+        <p>This project was developed by <strong>K.Venkata Chaitanya,D.Harshanth Reddy,Tejaswi,Princy,Rajeswari</strong> as part of a <strong>Cyber Security Internship</strong>. This project is designed to <strong>Secure the Organizations in Real World from Cyber Frauds performed by Hackers</strong>.</p>
+        
+        <h2>Project Details</h2>
+        <table>
+            <tr>
+                <th>Project Details</th>
+                <th>Value</th>
+            </tr>
+            <tr>
+                <td>Project Name</td>
+                <td>USB Physical Security</td>
+            </tr>
+            <tr>
+                <td>Project Description</td>
+                <td>Implementing Physical Security Policy on USB Ports in Organization for Physical Security</td>
+            </tr>
+            <tr>
+                <td>Project Start Date</td>
+                <td>08-Aug-2025</td>
+            </tr>
+            <tr>
+                <td>Project End Date</td>
+                <td>07-Sep-2025</td>
+            </tr>
+            <tr>
+                <td>Project Status</td>
+                <td>Completed</td>
+            </tr>
+        </table>
+        
+        <h2>Developer Details</h2>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Employee ID</th>
+                <th>Email</th>
+            </tr>
+              <tr>
+                <td>K.Venkata Chaitanya</td>
+                <td>ST#IS#8052</td>
+                <td>23kb1a3037@nbkrist.org</td>
+            </tr>
+            <tr>
+                <td>D.Harshanth Reddy</td>
+                <td>ST#IS#8107</td>
+                <td>23kb1a3021@nbkrist.org</td>
+            </tr>
+            <tr>
+                <td>Tejaswi</td>
+                <td>ST#IS#8056</td>
+                <td>Anonymous@gmail.com</td>
+            </tr>
+            <tr>
+                <td>Princy</td>
+                <td>ST#IS#8051</td>
+                <td>Anonymous@gmail.com</td>
+            </tr>
+            <tr>
+                <td>Rajeswari</td>
+                <td>ST#IS#8079</td>
+                <td>Anonymous@gmail.com</td>
+            </tr>
+            <tr>
+                <td>Anonymous</td>
+                <td>ST#IS#0001</td>
+                <td>Anonymous@gmail.com</td>
+            </tr>
+        </table>
+        
+        <h2>Company Details</h2>
+        <table>
+            <tr>
+                <th>Company</th>
+                <th>Value</th>
+            </tr>
+            <tr>
+                <td>Name</td>
+                <td>Supraja Technologies</td>
+            </tr>
+             <tr>
+                <td>Email</td>
+                <td>contact@suprajatechnologies.com</td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
+"""
+    
+    # Save the HTML content to a temporary file
+    with tempfile.NamedTemporaryFile(mode='w', delete=False, suffix='.html') as temp_file:
+        temp_file.write(html_code)
+        temp_file_path = temp_file.name
+
+    # Open the temporary HTML file in the default web browser
+    webbrowser.open('file://' + os.path.realpath(temp_file_path))
+    get_logger_with_user().info("Project Info viewed.")
+
+
 # --- CORE APPLICATION LOGIC ---
 
 class USBControlApp:
@@ -247,30 +407,67 @@ class USBControlApp:
         self.config.read('config.ini')
         self.max_login_attempts = self.config.getint('SECURITY', 'MaxLoginAttempts', fallback=3)
 
+        # Modern color scheme
+        self.bg_color = "#2c3e50"  # Dark blue-gray
+        self.accent_color = "#3498db"  # Bright blue
+        self.button_color = "#2980b9"  # Slightly darker blue
+        self.hover_color = "#1abc9c"  # Teal for hover effects
+        self.text_color = "#ecf0f1"  # Light gray text
+        self.error_color = "#e74c3c"  # Red for errors
+        self.success_color = "#2ecc71"  # Green for success
+        
         self.create_login_window()
 
     def create_login_window(self):
         self.clear_window()
         self.root.title("Login - USB Security")
-        self.root.geometry("500x350")
-        self.root.configure(bg="#808080")
+        self.root.geometry("600x500")
+        self.root.configure(bg=self.bg_color)
         
-        frame = Frame(self.root, bg="#808080")
-        frame.pack(fill="both", expand=True, pady=20)
-
-        Label(frame, text="Admin Login", font=("Arial", 24, "bold"), bg="#808080", fg="white").pack(pady=10)
+        # Create a stylish frame
+        frame = Frame(self.root, bg=self.bg_color, padx=30, pady=30)
+        frame.pack(fill="both", expand=True)
         
-        Label(frame, text="Username:", font=("Arial", 12), bg="#808080", fg="white").pack(pady=(10,0))
-        self.username_entry = Entry(frame, width=30, font=("Arial", 12))
-        self.username_entry.pack(pady=5)
+        # Title with modern styling
+        title_label = Label(frame, text="USB Security Control", font=("Arial", 28, "bold"), 
+                           bg=self.bg_color, fg=self.text_color)
+        title_label.pack(pady=(20, 40))
         
-        Label(frame, text="Password:", font=("Arial", 12), bg="#808080", fg="white").pack(pady=(10,0))
-        self.password_entry = Entry(frame, show="*", width=30, font=("Arial", 12))
-        self.password_entry.pack(pady=5)
+        # Subtitle
+        subtitle_label = Label(frame, text="Admin Login Required", font=("Arial", 14), 
+                              bg=self.bg_color, fg=self.accent_color)
+        subtitle_label.pack(pady=(0, 30))
         
-        Button(frame, text="Login", command=self.handle_login, bg="#4A90E2", fg="white", font=("Arial", 12, "bold"), relief="raised", borderwidth=2, width=15).pack(pady=20)
+        # Username field
+        Label(frame, text="Username:", font=("Arial", 12), bg=self.bg_color, fg=self.text_color).pack(pady=(10,5))
+        self.username_entry = Entry(frame, width=30, font=("Arial", 12), bg="#34495e", fg=self.text_color, 
+                                   insertbackground=self.text_color, relief="flat")
+        self.username_entry.pack(pady=5, ipady=8)
+        
+        # Password field
+        Label(frame, text="Password:", font=("Arial", 12), bg=self.bg_color, fg=self.text_color).pack(pady=(20,5))
+        self.password_entry = Entry(frame, show="*", width=30, font=("Arial", 12), bg="#34495e", 
+                                   fg=self.text_color, insertbackground=self.text_color, relief="flat")
+        self.password_entry.pack(pady=5, ipady=8)
+        
+        # Login button with hover effect
+        login_btn = Button(frame, text="Login", command=self.handle_login, 
+                          bg=self.button_color, fg=self.text_color, 
+                          font=("Arial", 14, "bold"), relief="flat", 
+                          width=20, pady=12, cursor="hand2")
+        login_btn.pack(pady=30)
+        
+        # Bind hover effects
+        login_btn.bind("<Enter>", lambda e: login_btn.config(bg=self.hover_color))
+        login_btn.bind("<Leave>", lambda e: login_btn.config(bg=self.button_color))
+        
+        # Footer
+        footer_label = Label(frame, text="© 2025 Supraja Technologies - Cyber Security Internship", 
+                            font=("Arial", 9), bg=self.bg_color, fg="#7f8c8d")
+        footer_label.pack(side="bottom", pady=10)
         
         self.username_entry.focus_set()
+        self.password_entry.bind('<Return>', lambda event: self.handle_login())
 
     def handle_login(self):
         global CURRENT_USER
@@ -297,30 +494,68 @@ class USBControlApp:
     def create_main_window(self):
         self.clear_window()
         self.root.title("USB Physical Security Control Panel")
-        self.root.geometry("600x650") 
-        self.root.configure(bg="#808080")
+        self.root.geometry("800x700") 
+        self.root.configure(bg=self.bg_color)
 
-        main_frame = Frame(self.root, bg="#808080")
-        main_frame.pack(fill="both", expand=True, padx=20, pady=20)
-
-        Label(main_frame, text=f"Welcome, {CURRENT_USER}!", font=("Arial", 18, "bold"), bg="#808080", fg="white").pack(pady=10)
-
-        # --- CHANGE 1: Create the status label but leave it empty for now ---
-        self.status_label = Label(main_frame, text="", font=("Arial", 16, "bold"), bg="#808080")
-        self.status_label.pack(pady=(5, 20))
-
-        btn_style = {"font": ("Arial", 12, "bold"), "fg": "white", "width": 25, "pady": 10, "relief": "raised", "borderwidth": 3}
+        # Header frame
+        header_frame = Frame(self.root, bg=self.bg_color)
+        header_frame.pack(fill="x", pady=(20, 10))
         
-        Button(main_frame, text="Disable USB Ports", bg="red", **btn_style, command=self.disable_usb).pack(pady=8)
-        Button(main_frame, text="Enable USB Ports", bg="green", **btn_style, command=self.enable_usb).pack(pady=8)
-        Button(main_frame, text="View Status", bg="blue", **btn_style, command=self.update_status_display).pack(pady=8)
-        Button(main_frame, text="Generate & Email Password", bg="orange", **btn_style, command=self.generate_and_email_password).pack(pady=8)
-        Button(main_frame, text="Change User Email", bg="#5D3FD3", **btn_style, command=self.change_user_email).pack(pady=8)
-        Button(main_frame, text="Project Info", bg="#00008B", **btn_style, command=self.show_project_info).pack(pady=8)
-        Button(main_frame, text="Logout", font=("Arial", 10, "bold"), bg="#A9A9A9", fg="black", width=15, command=self.logout).pack(side="bottom", pady=20)
+        # Welcome message
+        welcome_label = Label(header_frame, text=f"Welcome, {CURRENT_USER}!", 
+                             font=("Arial", 20, "bold"), bg=self.bg_color, fg=self.text_color)
+        welcome_label.pack(pady=10)
         
-        # --- CHANGE 2: Remove the automatic status update on login ---
-        # self.update_status_display() # This line has been commented out
+        # Status label
+        self.status_label = Label(header_frame, text="Status: Not Checked", 
+                                 font=("Arial", 14), bg=self.bg_color, fg=self.accent_color)
+        self.status_label.pack(pady=5)
+        
+        # Main content frame
+        main_frame = Frame(self.root, bg=self.bg_color)
+        main_frame.pack(fill="both", expand=True, padx=40, pady=20)
+        
+        # Button styling
+        btn_style = {
+            "font": ("Arial", 12, "bold"), 
+            "fg": self.text_color, 
+            "width": 25, 
+            "pady": 12, 
+            "relief": "flat", 
+            "borderwidth": 0,
+            "cursor": "hand2"
+        }
+        
+        # Button grid
+        buttons = [
+            ("Disable USB Ports", self.disable_usb, "#e74c3c"),
+            ("Enable USB Ports", self.enable_usb, "#2ecc71"),
+            ("View Status", self.update_status_display, "#3498db"),
+            ("Generate & Email Password", self.generate_and_email_password, "#f39c12"),
+            ("Change User Email", self.change_user_email, "#9b59b6"),
+            ("Project Info", self.show_project_info, "#1abc9c"),
+        ]
+        
+        for i, (text, command, color) in enumerate(buttons):
+            btn = Button(main_frame, text=text, command=command, bg=color, **btn_style)
+            btn.grid(row=i//2, column=i%2, padx=10, pady=10, sticky="nsew")
+            # Bind hover effects
+            btn.bind("<Enter>", lambda e, b=btn: b.config(bg=self.hover_color))
+            btn.bind("<Leave>", lambda e, b=btn, c=color: b.config(bg=c))
+        
+        # Configure grid weights
+        for i in range(2):
+            main_frame.columnconfigure(i, weight=1)
+        for i in range(3):
+            main_frame.rowconfigure(i, weight=1)
+        
+        # Logout button
+        logout_btn = Button(self.root, text="Logout", font=("Arial", 10, "bold"), 
+                           bg="#7f8c8d", fg=self.text_color, width=15, 
+                           command=self.logout, cursor="hand2", relief="flat")
+        logout_btn.pack(side="bottom", pady=20)
+        logout_btn.bind("<Enter>", lambda e: logout_btn.config(bg="#95a5a6"))
+        logout_btn.bind("<Leave>", lambda e: logout_btn.config(bg="#7f8c8d"))
     
     def change_user_email(self):
         """GUI handler to change a user's email address."""
@@ -370,8 +605,8 @@ class USBControlApp:
         """This function is now ONLY called when the 'View Status' button is clicked."""
         status = self.check_usb_status()
         get_logger_with_user().info(f"Status check performed. Result: {status}")
-        self.status_label.config(text=f"Current Status: {status}")
-        color = {"Enabled": "#00FF00", "Disabled": "red", "Permission Denied": "orange"}.get(status, "yellow")
+        self.status_label.config(text=f"Status: {status}")
+        color = {"Enabled": self.success_color, "Disabled": self.error_color, "Permission Denied": "#f39c12"}.get(status, "#f39c12")
         self.status_label.config(fg=color)
 
     def change_usb_state(self, enable=True):
@@ -392,7 +627,7 @@ class USBControlApp:
             logger.error(f"Failed to {action} USB ports. Admin rights required. Error: {e.stderr}")
             messagebox.showerror("Administrator Error", f"Failed to {action} ports. Please ensure this application is run with Administrator privileges.")
         finally:
-            # --- CHANGE 3: Also update the display after enabling/disabling ---
+            # Update the display after enabling/disabling
             self.update_status_display()
 
     def disable_usb(self):
@@ -429,10 +664,8 @@ class USBControlApp:
         else:
              messagebox.showerror("Database Error", f"Failed to update password for {target_username} in the database.")
 
-
     def show_project_info(self):
-        get_logger_with_user().info("Project Info viewed.")
-        messagebox.showinfo("Project Info", "This application was developed by Sal Krishna and Praneeth Nanda for a Cyber Security Internship.")
+        show_project_info()
 
 
 if __name__ == "__main__":
@@ -455,4 +688,3 @@ if __name__ == "__main__":
                              "This application requires administrator privileges to function.\n\n"
                              "Please start the application by right-clicking the 'run.bat' file and choosing 'Run as administrator'.")
         sys.exit(1)
-
