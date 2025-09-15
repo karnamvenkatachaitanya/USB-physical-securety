@@ -341,12 +341,12 @@ def show_project_info():
             </tr>
             <tr>
                 <td>D.Harshanth Reddy</td>
-                <td>ST#IS#8107</td>
-                <td>23kb1a3021@nbkrist.org</td>
+                <td>ST#IS#8056</td>
+                <td>duvvuruharshanthreddy@gmail.com</td>
             </tr>
             <tr>
                 <td>Tejaswi</td>
-                <td>ST#IS#8056</td>
+                <td>ST#IS#8107</td>
                 <td>tejaswi@gmail.com</td>
             </tr>
             <tr>
@@ -684,3 +684,4 @@ if __name__ == "__main__":
                              "This application requires administrator privileges to function.\n\n"
                              "Please start the application by right-clicking the 'run.bat' file and choosing 'Run as administrator'.")
         sys.exit(1)
+
